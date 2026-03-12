@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Authenticity Verifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Screenshot Authenticity Verifier</h1>
+            <p>Detect manipulated chat screenshots using AI and Digital Forensics.</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="drop-zone" id="drop-zone">
+                    <div class="drop-zone-content">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p>Drag & Drop a screenshot here</p>
+                        <span>or</span>
+                        <button class="btn browse-btn" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                    </div>
+                </div>
+
+                <div class="preview-container" id="preview-container" style="display: none;">
+                    <div class="image-wrapper" id="image-wrapper">
+                        <img id="image-preview" src="" alt="Screenshot Preview">
+                        <!-- Bounding boxes will be drawn here -->
+                    </div>
+                    <button class="btn analyze-btn" id="analyze-btn">Analyze Screenshot</button>
+                </div>
+                
+                <div class="loading" id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Running multi-stage forensic analysis...</p>
+                </div>
+            </section>
+
+            <section class="results-section" id="results-section" style="display: none;">
+                <h2>Analysis Results</h2>
+                
+                <div class="score-card">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg"
+                            d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                            />
+                            <path class="circle" id="score-circle-path"
+                            stroke-dasharray="0, 100"
+                            d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                            />
+                            <text x="18" y="20.35" class="percentage" id="score-text">0%</text>
+                        </svg>
+                    </div>
+                    <div class="score-details">
+                        <h3>Authenticity Score</h3>
+                        <p id="conclusion-text" class="conclusion">Analysis pending...</p>
+                    </div>
+                </div>
+
+                <div class="issues-card" id="issues-card" style="display: none;">
+                    <h3>Detected Anomalies</h3>
+                    <ul id="issues-list">
+                        <!-- Issues injected here -->
+                    </ul>
+                </div>
+
+                <div class="actions">
+                    <a href="#" id="download-report-btn" class="btn secondary-btn" download>Download Forensic Report</a>
+                    <button class="btn reset-btn" id="reset-btn">Analyze Another Image</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
