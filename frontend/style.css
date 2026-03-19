@@ -1,5 +1,5 @@
 :root {
-    /* Day mode: off-light and light grey */
+    /* Day mode: off-light and light grey (will try to change at the end*/
     --bg-color: #f8f9fa;
     --card-bg: #e9ecef;
     --text-primary: #111827;
@@ -14,7 +14,7 @@
 }
 
 [data-theme="dark"] {
-    /* Night mode: black and greish tone */
+    /* Night mode: black and greish tone (ok ok)*/
     --bg-color: #121212;
     --card-bg: #1e1e1e;
     --text-primary: #f8fafc;
