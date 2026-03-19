@@ -1,15 +1,25 @@
 :root {
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+    /* Day mode: off-light and light grey */
+    --bg-color: #f8f9fa;
+    --card-bg: #e9ecef;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
     --accent-color: #3b82f6;
     --accent-hover: #2563eb;
     --danger: #ef4444;
     --warning: #f59e0b;
     --success: #10b981;
-    --border-color: #334155;
+    --border-color: #cbd5e1;
     --font-family: 'Inter', sans-serif;
+}
+
+[data-theme="dark"] {
+    /* Night mode: black and greish tone */
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-primary: #f8fafc;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
 }
 
 * {
@@ -44,10 +54,37 @@ header {
     margin-bottom: 2.5rem;
 }
 
+.header-top {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+#theme-toggle {
+    position: absolute;
+    right: 0;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--border-color);
+}
+
 h1 {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     background: linear-gradient(90deg, #3b82f6, #8b5cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

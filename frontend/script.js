@@ -16,6 +16,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const issuesCard = document.getElementById('issues-card');
     const issuesList = document.getElementById('issues-list');
 
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIconMoon = document.getElementById('theme-icon-moon');
+    const themeIconSun = document.getElementById('theme-icon-sun');
+
+    // Check localStorage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIconMoon.style.display = 'block';
+        themeIconSun.style.display = 'none';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeIconMoon.style.display = 'none';
+        themeIconSun.style.display = 'block';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        let currentTheme = document.documentElement.getAttribute('data-theme');
+        let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', targetTheme);
+        localStorage.setItem('theme', targetTheme);
+        
+        if (targetTheme === 'dark') {
+            themeIconMoon.style.display = 'block';
+            themeIconSun.style.display = 'none';
+        } else {
+            themeIconMoon.style.display = 'none';
+            themeIconSun.style.display = 'block';
+        }
+    });
+
     let selectedFile = null;
 
     // Drag and Drop Events
